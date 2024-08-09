@@ -18,10 +18,11 @@ choco install ltspice -y
 choco install hwinfo -y
 choco install ntlite-free -y
 choco install virtualbox -y
+choco install revo-uninstaller -y
 
 # dev
 choco install git -y
 choco install pulsar -y
-choco install PyCharm-community -y
+#choco install PyCharm-community -y
 
 pause
