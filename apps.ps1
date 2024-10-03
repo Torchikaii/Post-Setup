@@ -24,5 +24,3 @@ choco install revo-uninstaller -y
 choco install git -y
 choco install pulsar -y
 #choco install PyCharm-community -y
-
-pause

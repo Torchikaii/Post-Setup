@@ -32,12 +32,17 @@ $scriptDir = $PSScriptRoot
 
 # List of non-admin scripts to run
 $nonAdminScripts = @(
-    "$scriptDir\test2.ps1"
+    "$scriptDir\scoop.ps1",
+    "$scriptDir\python.ps1",
+    "$scriptDir\MinGW.ps1",
+    "$scriptDir\pulsar_packages.ps1"
 )
 
-# List of admin-required scripts to run
+# List of admin-required scripts to run (admin scripts gets executed before non admin scripts)
 $adminScripts = @(
-    "$scriptDir\test1.ps1"
+    "$scriptDir\ChocolateyInstall.ps1",
+    "$scriptDir\apps.ps1",
+    "$scriptDir\WSL.ps1"
 )
 
 # Run admin-required scripts (elevated context)
