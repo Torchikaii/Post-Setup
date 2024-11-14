@@ -27,3 +27,6 @@ choco install javaruntime -y
 choco install git -y
 choco install pulsar -y
 #choco install PyCharm-community -y
+
+# productivity
+choco install pdfgear -y
