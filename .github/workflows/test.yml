@@ -1,0 +1,30 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check PowerShell syntax
+        shell: pwsh
+        run: |
+          $errors = $null
+          $null = [System.Management.Automation.Language.Parser]::ParseFile(
+            "main.ps1", [ref] $null, [ref] $errors
+          )
+          if ($errors) {
+            Write-Error "Syntax errors found:"
+            $errors | ForEach-Object { Write-Error $_ }
+            exit 1
+          }
+          Write-Host "main.ps1 syntax is valid"
+
+      - name: Verify ChocolateyInstall.ps1 and apps.ps1 exist
+        shell: pwsh
+        run: |
+          if (-not (Test-Path ChocolateyInstall.ps1)) { throw "ChocolateyInstall.ps1 not found" }
+          if (-not (Test-Path apps.ps1)) { throw "apps.ps1 not found" }
+          Write-Host "All required files exist"
